@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="description" content="Brickell Place Amigos 2026: proven execution, open governance, and a clear plan for value, livability, and long-term stability." />
+<title>Amigos 2026 | Brickell Place Amigos</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  /* =========================================================
+     AGENCY-GRADE SYSTEM (mobile-first, high polish)
+     - sticky nav
+     - responsive buttons (no misalignment / overlap)
+     - safe-area padding for iOS
+     - subtle motion with prefers-reduced-motion support
+     - improved hierarchy + section rhythm
+  ========================================================== */
+
+  :root{
+    --navy:#0b1d31;
+    --navy-2:#081426;
+    --gold:#f0c52b;
+    --gold-2:#d8aa12;
+    --teal:#0d7a71;
+    --ink:#0b1724;
+    --ink-soft:#4f6a82;
+    --bg:#f4f7fb;
+    --white:#ffffff;
+    --line:#e2eaf2;
+
+    --radius-xl:28px;
+    --radius-lg:18px;
+    --radius-md:14px;
+
+    --shadow-soft: 0 10px 26px rgba(7,20,35,.10);
+    --shadow-med:  0 18px 48px rgba(7,20,35,.14);
+    --shadow-hero: 0 32px 86px rgba(7,20,35,.22);
+
+    --maxw: 1180px;
+
+    --pad: clamp(16px, 3.6vw, 28px);
+    --section-gap: clamp(40px, 7vw, 76px);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(900px 500px at 10% 0%, rgba(240,197,43,.18), transparent 60%),
+      radial-gradient(900px 500px at 90% 10%, rgba(13,122,113,.14), transparent 55%),
+      linear-gradient(180deg,#fbfdff 0%, var(--bg) 100%);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Skip link for accessibility */
+  .skip{
+    position:absolute;
+    left:-999px; top:12px;
+    background:#fff;
+    color:var(--ink);
+    padding:10px 12px;
+    border-radius:12px;
+    box-shadow: var(--shadow-soft);
+    border:1px solid var(--line);
+    z-index:9999;
+  }
+  .skip:focus{left:12px;}
+
+  .page{
+    width:min(var(--maxw), calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 16px 0 calc(32px + env(safe-area-inset-bottom));
+  }
+
+  /* =========================================================
+     STICKY HEADER / NAV
+  ========================================================== */
+  .header-shell{
+    position: sticky;
+    top: 0;
+    z-index: 2000;
+    padding-top: env(safe-area-inset-top);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(244, 247, 251, .72);
+    border-bottom: 1px solid rgba(226, 234, 242, .9);
+  }
+
+  .header{
+    width:min(var(--maxw), calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 10px 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 12px;
+  }
+
+  .brand{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    min-width: 220px;
+  }
+
+  .brand-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding: 10px 12px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-2));
+    box-shadow: var(--shadow-soft);
+    font-weight: 900;
+    letter-spacing: .04em;
+    color:#0b1623;
+    white-space: nowrap;
+  }
+  .brand-badge .dots{
+    opacity:.65;
+    letter-spacing:.18em;
+    font-weight: 900;
+  }
+
+  .meeting{
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: #18415f;
+    line-height: 1.3;
+  }
+
+  .nav{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .nav a{
+    text-decoration:none;
+    color: #17344a;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 9px 10px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    transition: .2s ease;
+    white-space: nowrap;
+  }
+  .nav a:hover{
+    background: rgba(255,255,255,.8);
+    border-color: rgba(226,234,242,1);
+    box-shadow: 0 8px 18px rgba(7,20,35,.08);
+  }
+
+  .nav .nav-cta{
+    background: rgba(11,29,49,.08);
+    border-color: rgba(11,29,49,.10);
+  }
+
+  /* Mobile nav wraps cleanly */
+  @media (max-width: 860px){
+    .header{
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 0;
+    }
+    .brand{min-width: unset;}
+    .nav{justify-content:flex-start;}
+  }
+
+  /* =========================================================
+     BUTTONS (no misalignment; mobile stack)
+  ========================================================== */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-weight: 800;
+    text-decoration:none;
+    font-size: 14px;
+    line-height: 1;
+    border: 1px solid transparent;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+    user-select:none;
+    -webkit-tap-highlight-color: transparent;
+    min-height: 44px;
+  }
+  .btn:active{transform: translateY(1px);}
+  .btn-primary{
+    background: var(--gold);
+    color:#0b1623;
+    border-color: rgba(170,125,0,.35);
+    box-shadow: 0 10px 20px rgba(240,197,43,.22);
+  }
+  .btn-primary:hover{
+    background: var(--gold-2);
+    box-shadow: 0 14px 30px rgba(240,197,43,.26);
+    transform: translateY(-2px);
+  }
+  .btn-outline{
+    background: rgba(255,255,255,.10);
+    color: #fff;
+    border-color: rgba(255,255,255,.35);
+  }
+  .btn-outline:hover{
+    background: rgba(255,255,255,.16);
+    transform: translateY(-2px);
+  }
+  .btn-light{
+    background:#fff;
+    color:#0b1d31;
+    border-color: rgba(185,205,223,.85);
+    box-shadow: 0 10px 20px rgba(7,20,35,.08);
+  }
+  .btn-light:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(7,20,35,.12);
+  }
+
+  .btn-row{
+    display:flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  @media (max-width: 520px){
+    .btn-row{flex-direction: column; align-items: stretch;}
+    .btn{width:100%;}
+  }
+
+  /* =========================================================
+     HERO
+  ========================================================== */
+  .hero{
+    margin-top: 18px;
+    border-radius: var(--radius-xl);
+    overflow:hidden;
+    box-shadow: var(--shadow-hero);
+    background: #0b1623;
+    position: relative;
+  }
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.08fr .92fr;
+    min-height: 560px;
+  }
+
+  .hero-copy{
+    padding: clamp(22px, 4.2vw, 44px);
+    background:
+      radial-gradient(700px 420px at 18% 10%, rgba(240,197,43,.18), transparent 55%),
+      radial-gradient(600px 420px at 0% 70%, rgba(13,122,113,.12), transparent 55%),
+      linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+    color:#fff;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    position: relative;
+  }
+
+  .hero-kicker{
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-weight: 700;
+    color: rgba(214,231,246,.80);
+    margin-bottom: 10px;
+  }
+
+  .hero h1{
+    font-size: clamp(30px, 4.5vw, 56px);
+    line-height: 1.05;
+    font-weight: 900;
+    margin-bottom: 14px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero p{
+    color: rgba(220,236,248,.88);
+    font-size: clamp(14px, 1.6vw, 16px);
+    max-width: 64ch;
+    margin-bottom: 16px;
+  }
+
+  .hero-note{
+    margin-top: 10px;
+    border-left: 4px solid var(--teal);
+    padding-left: 12px;
+    color: rgba(200,220,236,.92);
+    font-size: 13px;
+    max-width: 66ch;
+  }
+
+  .hero-visual{
+    position: relative;
+    background:#08111b;
+    min-height: 340px;
+  }
+  .hero-visual img{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit: cover;
+    display:block;
+    transform: scale(1.02);
+  }
+  .hero-visual::after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, rgba(7,20,35,.0) 0%, rgba(7,20,35,.40) 55%, rgba(7,20,35,.72) 100%);
+  }
+
+  .hero-card{
+    position:absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    background: rgba(255,255,255,.92);
+    border: 1px solid rgba(226,234,242,.92);
+    border-radius: 16px;
+    padding: 14px 14px;
+    box-shadow: var(--shadow-med);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .hero-card strong{
+    display:block;
+    color:#123351;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .hero-card span{
+    display:block;
+    color:#4b667f;
+    font-size: 13px;
+  }
+
+  @media (max-width: 980px){
+    .hero-grid{grid-template-columns: 1fr;}
+    .hero-visual{min-height: 320px;}
+  }
+
+  /* =========================================================
+     PROOF STRIP (campaign-feel chips -> premium tiles)
+  ========================================================== */
+  .proof{
+    margin-top: 18px;
+    display:grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .proof .tile{
+    background: rgba(255,255,255,.92);
+    border: 1px solid rgba(226,234,242,1);
+    border-radius: 16px;
+    padding: 12px 12px;
+    box-shadow: var(--shadow-soft);
+    font-weight: 800;
+    font-size: 13px;
+    color: #274760;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    min-height: 54px;
+  }
+  @media (max-width: 1080px){
+    .proof{grid-template-columns: repeat(3, minmax(0, 1fr));}
+  }
+  @media (max-width: 620px){
+    .proof{grid-template-columns: repeat(2, minmax(0, 1fr));}
+    .proof .tile{justify-content:flex-start; text-align:left;}
+  }
+
+  /* =========================================================
+     SECTIONS
+  ========================================================== */
+  .section{
+    margin-top: var(--section-gap);
+  }
+
+  .section-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  h2{
+    font-size: clamp(22px, 2.8vw, 38px);
+    line-height: 1.15;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    color:#0d2438;
+  }
+
+  .subtitle{
+    color: var(--ink-soft);
+    max-width: 78ch;
+    margin-top: 8px;
+    font-size: 15px;
+  }
+
+  .divider{
+    height:1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(226,234,242,1) 20%, rgba(226,234,242,1) 80%, transparent 100%);
+    margin-top: 18px;
+  }
+
+  /* =========================================================
+     SPLIT SECTION
+  ========================================================== */
+  .split{
+    display:grid;
+    grid-template-columns: 1.06fr .94fr;
+    gap: clamp(16px, 3vw, 28px);
+    align-items: stretch;
+  }
+
+  .split-copy{
+    background: rgba(255,255,255,.82);
+    border: 1px solid rgba(226,234,242,1);
+    border-radius: var(--radius-xl);
+    padding: var(--pad);
+    box-shadow: var(--shadow-soft);
+  }
+  .split-copy p{
+    margin-bottom: 12px;
+    color:#365a73;
+    font-size: 14.5px;
+  }
+  .split-copy strong{color:#10314c;}
+
+  .media{
+    border-radius: var(--radius-xl);
+    overflow:hidden;
+    box-shadow: var(--shadow-med);
+    border: 1px solid rgba(226,234,242,1);
+    background:#0b1623;
+    min-height: 280px;
+    position: relative;
+  }
+  .media img{
+    width:100%; height:100%;
+    object-fit: cover;
+    display:block;
+  }
+
+  @media (max-width: 980px){
+    .split{grid-template-columns: 1fr;}
+  }
+
+  /* =========================================================
+     RESULTS GRID (more premium)
+  ========================================================== */
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+  }
+  @media (max-width: 1040px){ .grid{grid-template-columns: repeat(2, minmax(0,1fr));} }
+  @media (max-width: 560px){ .grid{grid-template-columns: 1fr;} }
+
+  .card{
+    background: rgba(255,255,255,.92);
+    border: 1px solid rgba(226,234,242,1);
+    border-radius: 18px;
+    padding: 16px;
+    box-shadow: var(--shadow-soft);
+    transition: transform .22s ease, box-shadow .22s ease;
+    display:flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 170px;
+  }
+  .card:hover{
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-med);
+  }
+
+  .icon{
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    display:grid;
+    place-items:center;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(240,197,43,.22) 0%, rgba(240,197,43,.10) 42%, transparent 70%),
+      linear-gradient(180deg, rgba(11,29,49,.06), rgba(11,29,49,.02));
+    border: 1px solid rgba(226,234,242,1);
+    font-size: 20px;
+  }
+
+  .card h3{
+    font-size: 15px;
+    line-height: 1.25;
+    color:#10314c;
+    font-weight: 900;
+  }
+
+  .card p{
+    font-size: 13.5px;
+    color:#4b667f;
+    line-height: 1.65;
+  }
+
+  .trust-row{
+    margin-top: 14px;
+    display:grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+  @media (max-width: 1040px){ .trust-row{grid-template-columns: repeat(2, minmax(0,1fr));} }
+  @media (max-width: 560px){ .trust-row{grid-template-columns: 1fr;} }
+
+  .trust-item{
+    background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.78));
+    border: 1px solid rgba(226,234,242,1);
+    border-left: 5px solid var(--teal);
+    border-radius: 16px;
+    padding: 12px 12px;
+    box-shadow: var(--shadow-soft);
+    color:#355a73;
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* =========================================================
+     FUTURE / PLAN
+  ========================================================== */
+  .future{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    align-items: stretch;
+  }
+  @media (max-width: 980px){ .future{grid-template-columns: 1fr;} }
+
+  .plan{
+    background: rgba(255,255,255,.86);
+    border: 1px solid rgba(226,234,242,1);
+    border-radius: var(--radius-xl);
+    padding: var(--pad);
+    box-shadow: var(--shadow-soft);
+    display:grid;
+    gap: 10px;
+  }
+
+  .plan-step{
+    border: 1px solid rgba(226,234,242,1);
+    background: rgba(255,255,255,.92);
+    border-radius: 16px;
+    padding: 12px 12px;
+    box-shadow: 0 10px 20px rgba(7,20,35,.06);
+  }
+  .plan-step strong{
+    display:block;
+    font-size: 14px;
+    color:#10314c;
+    margin-bottom: 4px;
+    font-weight: 900;
+  }
+  .plan-step span{
+    display:block;
+    font-size: 13.5px;
+    color:#4b667f;
+    line-height: 1.6;
+  }
+
+  /* =========================================================
+     TEAM
+  ========================================================== */
+  .team{
+    background:
+      radial-gradient(800px 400px at 20% 0%, rgba(240,197,43,.14), transparent 55%),
+      linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.76));
+    border: 1px solid rgba(226,234,242,1);
+    border-radius: var(--radius-xl);
+    padding: var(--pad);
+    box-shadow: var(--shadow-soft);
+  }
+  .team-list{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  @media (max-width: 760px){
+    .team-list{grid-template-columns: 1fr;}
+  }
+  .team-item{
+    background: rgba(255,255,255,.92);
+    border: 1px solid rgba(226,234,242,1);
+    border-radius: 16px;
+    padding: 12px 12px;
+    box-shadow: 0 10px 20px rgba(7,20,35,.06);
+    display:grid;
+    gap: 6px;
+  }
+  .team-item strong{
+    font-weight: 900;
+    color:#10314c;
+    font-size: 14px;
+  }
+  .team-item span{
+    color:#4b667f;
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  /* =========================================================
+     CONTACT (fixes mobile overlap + button alignment)
+  ========================================================== */
+  .contact-wrap{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    align-items: stretch;
+  }
+  @media (max-width: 980px){
+    .contact-wrap{grid-template-columns: 1fr;}
+  }
+
+  .contact-panel{
+    background: rgba(255,255,255,.86);
+    border: 1px solid rgba(226,234,242,1);
+    border-radius: var(--radius-xl);
+    padding: var(--pad);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .qr-block{
+    margin-top: 12px;
+    display:flex;
+    gap: 14px;
+    align-items:center;
+    justify-content:flex-start;
+    flex-wrap: wrap;
+    background: rgba(255,255,255,.92);
+    border: 1px solid rgba(226,234,242,1);
+    border-radius: 18px;
+    padding: 12px;
+    box-shadow: 0 10px 20px rgba(7,20,35,.06);
+    text-decoration:none;
+  }
+  .qr-block img{
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+    display:block;
+  }
+  .qr-block span{
+    font-weight: 900;
+    color:#355a73;
+    font-size: 13px;
+  }
+  @media (max-width: 520px){
+    .qr-block{justify-content:center; text-align:center;}
+    .qr-block img{width: 160px; height: 160px;}
+  }
+
+  .fine{
+    margin-top: 12px;
+    color:#4b667f;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  footer{
+    margin-top: var(--section-gap);
+    padding: 22px 0 10px;
+    border-top: 1px solid rgba(226,234,242,1);
+    color:#5b7790;
+    font-size: 12px;
+    text-align:center;
+    line-height: 1.6;
+  }
+
+  /* =========================================================
+     MOTION (subtle, premium, not cheesy)
+     - respects reduced motion
+  ========================================================== */
+  .reveal{
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .btn, .card, .nav a{transition:none;}
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
+
+  /* Anchor offset so sticky header doesn't cover headings */
+  [id]{scroll-margin-top: 92px;}
+
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Sticky Header -->
+<div class="header-shell" role="banner" aria-label="Site header">
+  <div class="header">
+    <div class="brand" aria-label="Brickell Place Amigos">
+      <div class="brand-badge">
+        <span>Brickell Place Amigos</span>
+        <span class="dots">• • •</span>
+      </div>
+      <div class="meeting">Annual Meeting: Tuesday, March 17, 2026 · 6:30 PM</div>
+    </div>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#method">Method</a>
+      <a href="#track">Track Record</a>
+      <a href="#agenda">Next 10-Year Agenda</a>
+      <a href="#recommendation" class="nav-cta">Our Recommendation</a>
+      <a href="#contact" class="nav-cta">Ask a Question</a>
+    </nav>
+  </div>
+</div>
+
+<main id="main" class="page" role="main">
+
+  <!-- HERO -->
+  <header class="hero reveal" aria-label="Campaign hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="hero-kicker">A continuity campaign built on delivery</span>
+        <h1>Steady hands. Clear progress. Better living ahead.</h1>
+        <p>For the last five years, the priority was to secure the fundamentals: structure, compliance, operations, and finances. That foundation now allows the next phase to focus on quality of life and long-term value.</p>
+
+        <div class="btn-row" aria-label="Primary actions">
+          <a class="btn btn-primary" href="#recommendation">Our Recommendation</a>
+          <a class="btn btn-outline" href="#contact">Ask a Question</a>
+        </div>
+
+        <p class="hero-note">Continuity means predictable decisions, direct access, and progress that keeps moving without costly resets.</p>
+      </div>
+
+      <div class="hero-visual" aria-label="Hero visual">
+        <img src="assets/images/render-hero.jpg" alt="Pool deck rendering overview">
+        <div class="hero-card">
+          <strong>The next chapter is already underway.</strong>
+          <span>As foundational work nears closeout, priorities shift to livability, functionality, and beautification across shared spaces.</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- PROOF -->
+  <section class="proof" aria-label="Key proof points">
+    <div class="tile reveal">🗓 Election: March 17, 2026</div>
+    <div class="tile reveal">🏗 5-year stabilization cycle near closeout</div>
+    <div class="tile reveal">🌿 10-year value runway before 60-year cycle</div>
+    <div class="tile reveal">🪟 300+ units in window replacement program</div>
+    <div class="tile reveal">💼 Delinquency reduced to about 2%</div>
+    <div class="tile reveal">👥 50+ open meetings across 5 years</div>
+  </section>
+
+  <!-- METHOD -->
+  <section id="method" class="section" aria-label="The Method Behind the Progress">
+    <div class="section-head reveal">
+      <div>
+        <h2>The Method Behind the Progress</h2>
+        <p class="subtitle">Our sequence was deliberate: stabilize critical obligations, modernize core systems, rebuild financial governance, then invest in daily resident experience.</p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div class="split-copy reveal">
+        <p><strong>Recertification and structural recovery:</strong> overdue compliance and structural scope were brought into a managed completion path in close coordination with the City of Miami.</p>
+        <p><strong>System-level modernization:</strong> core infrastructure was rebuilt across water valves, life-safety systems, mechanical rooms, pumps, generators, and other high-risk components.</p>
+        <p><strong>Open-governance execution:</strong> committees, invited experts, and owners had unusual access to information and direct board dialogue across 50+ meetings.</p>
+        <p><strong>Financial control recovery:</strong> operations were rebuilt end-to-end, with stronger collections, cleaner records, tighter controls, and more reliable planning.</p>
+      </div>
+
+      <figure class="media reveal">
+        <img src="assets/images/render-pool.jpg" alt="Pool deck zone rendering">
+      </figure>
+    </div>
+
+    <div class="divider" aria-hidden="true"></div>
+  </section>
+
+  <!-- TRACK RECORD -->
+  <section id="track" class="section" aria-label="Our Track Record">
+    <div class="section-head reveal">
+      <div>
+        <h2>Our Track Record</h2>
+        <p class="subtitle">Our model is straightforward: careful decisions, transparent process, and consistent follow-through. Owners can measure it by outcomes.</p>
+      </div>
+    </div>
+
+    <div class="grid" role="list" aria-label="Track record results">
+      <article class="card reveal" role="listitem"><div class="icon">🏗️</div><h3>Recertification Execution</h3><p>Moved overdue structural and compliance obligations into a disciplined completion plan with city coordination.</p></article>
+      <article class="card reveal" role="listitem"><div class="icon">🪟</div><h3>IRMA to Window Program</h3><p>Turned insurance recovery into one of the community's largest window and envelope upgrade programs.</p></article>
+      <article class="card reveal" role="listitem"><div class="icon">🚨</div><h3>Life-Safety Upgrades</h3><p>Delivered upgraded fire alarm and BDA systems to improve resilience, reliability, and code alignment.</p></article>
+      <article class="card reveal" role="listitem"><div class="icon">🛡️</div><h3>Security + Access</h3><p>Expanded camera coverage and modernized access controls for stronger monitoring and property security.</p></article>
+      <article class="card reveal" role="listitem"><div class="icon">🔧</div><h3>In-House Capability</h3><p>Built stronger in-house maintenance and security capacity for faster execution and tighter quality control.</p></article>
+      <article class="card reveal" role="listitem"><div class="icon">📊</div><h3>Financial Turnaround</h3><p>Rebuilt collections, accounting controls, and payment governance to restore stability and planning confidence.</p></article>
+      <article class="card reveal" role="listitem"><div class="icon">🤝</div><h3>Owner-Centered Governance</h3><p>Kept owners close to decisions through committees, open meetings, and direct access to information.</p></article>
+      <article class="card reveal" role="listitem"><div class="icon">🔄</div><h3>Continuity in Practice</h3><p>Rotated service across ten board members in five years while preserving momentum and execution standards.</p></article>
+    </div>
+
+    <div class="trust-row" aria-label="Trust and execution notes">
+      <div class="trust-item reveal">Zero litigation spend over the last five years.</div>
+      <div class="trust-item reveal">Zero city fines during this cycle.</div>
+      <div class="trust-item reveal">Strong working coordination with city officials through major compliance milestones.</div>
+      <div class="trust-item reveal">Board direction: pursue upcoming improvements without a planned special assessment.</div>
+    </div>
+
+    <div class="divider" aria-hidden="true"></div>
+  </section>
+
+  <!-- AGENDA -->
+  <section id="agenda" class="section" aria-label="The Next 10-Year Agenda">
+    <div class="section-head reveal">
+      <div>
+        <h2>The Next 10-Year Agenda</h2>
+        <p class="subtitle">With stabilization nearing closeout, the next phase centers on livability, usability, and long-term value across community facilities.</p>
+      </div>
+    </div>
+
+    <div class="future">
+      <figure class="media reveal">
+        <img src="assets/images/render-garden.jpg" alt="Common-area future rendering">
+      </figure>
+
+      <div class="plan reveal" aria-label="Plan steps">
+        <div class="plan-step"><strong>1. Exterior-first upgrades</strong><span>Start with shared areas where improvements are visible, immediate, and widely used.</span></div>
+        <div class="plan-step"><strong>2. Interior sequence</strong><span>Phase tower interiors and hallways with practical scheduling and cost discipline.</span></div>
+        <div class="plan-step"><strong>3. Activate unused space</strong><span>Convert underused common areas into functional, high-value resident amenities.</span></div>
+        <div class="plan-step"><strong>4. Long-horizon planning</strong><span>Use the runway before the 60-year cycle for planned upgrades, not emergency fixes.</span></div>
+      </div>
+    </div>
+
+    <div class="divider" aria-hidden="true"></div>
+  </section>
+
+  <!-- RECOMMENDATION -->
+  <section id="recommendation" class="section" aria-label="Our Recommendation for Your Vote">
+    <div class="section-head reveal">
+      <div>
+        <h2>Our Recommendation for Your Vote</h2>
+        <p class="subtitle">Vote for a team with a proven operating model and the full skill set needed for the next chapter.</p>
+      </div>
+    </div>
+
+    <div class="team reveal">
+      <div class="team-list" aria-label="Recommended team">
+        <div class="team-item"><strong>Caridy Patino</strong><span>Leadership continuity with direct owner access and disciplined execution.</span></div>
+        <div class="team-item"><strong>Morgan Sirlin</strong><span>Capital planning and operations leadership for complex, multi-year delivery.</span></div>
+        <div class="team-item"><strong>Alexander Magrisso, Esq.</strong><span>Legal and regulatory judgment for high-stakes governance and compliance decisions.</span></div>
+        <div class="team-item"><strong>Tracy Harrington</strong><span>Construction and design perspective focused on livability and shared-space quality.</span></div>
+        <div class="team-item"><strong>Jessica Bosworth, CPA</strong><span>Financial controls and reporting rigor that strengthen long-term stewardship.</span></div>
+      </div>
+    </div>
+
+    <div class="divider" aria-hidden="true"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section" aria-label="Ask Questions. Stay Involved.">
+    <div class="section-head reveal">
+      <div>
+        <h2>Ask Questions. Stay Involved.</h2>
+        <p class="subtitle">Questions are welcome. A strong community runs on direct conversations, clear facts, and shared responsibility.</p>
+      </div>
+    </div>
+
+    <div class="contact-wrap">
+      <figure class="media reveal">
+        <img src="assets/images/gallery-2.jpg" alt="Community aerial view">
+      </figure>
+
+      <div class="contact-panel reveal">
+        <div class="btn-row" aria-label="Contact actions">
+          <a class="btn btn-primary" href="assets/images/whatsapp-qr.png" target="_blank" rel="noopener noreferrer" aria-label="Join Amigos WhatsApp Group">Join Amigos WhatsApp Group (200+ owners)</a>
+          <a class="btn btn-light" href="mailto:caridy@gmail.com">Email Us</a>
+          <a class="btn btn-light" href="tel:+13053029840">Call Us</a>
+        </div>
+
+        <a class="qr-block" href="assets/images/whatsapp-qr.png" target="_blank" rel="noopener noreferrer" aria-label="Scan WhatsApp QR code">
+          <img src="assets/images/whatsapp-qr.png" alt="WhatsApp QR code to join Amigos group">
+          <span>Scan to join the group</span>
+        </a>
+
+        <p class="fine">Amigos Chat is owner-built and includes 200+ neighbors sharing updates, ideas, and context. Join the conversation and stay informed.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Paid for by neighbors supporting the Brickell Place Amigos continuity slate. This is not an official communication of Brickell Place Condominium Association.
+  </footer>
+</main>
+
+<script>
+  // Premium, minimal reveal animations (IntersectionObserver)
+  (function(){
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) || !els.length){
+      els.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+
+</body>
+</html>

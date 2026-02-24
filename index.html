@@ -1,637 +1,104 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Brickell Place Amigos 2026: proven execution, open governance, and a clear plan for value, livability, and long-term stability.">
-  <title>Amigos 2026 | Brickell Place Amigos</title>
-  <style>
-    :root {
-      --ink: #111b26;
-      --ink-soft: #43566b;
-      --bg: #f4f6f8;
-      --white: #ffffff;
-      --line: #d7dfe6;
-      --navy: #0f2438;
-      --teal: #0d7a71;
-      --yellow: #f0c52b;
-      --yellow-deep: #e2b019;
-      --radius-xl: 24px;
-      --radius-lg: 16px;
-      --radius-md: 12px;
-      --shadow: 0 16px 36px rgba(15, 28, 40, 0.14);
-      --maxw: 1160px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      background: linear-gradient(180deg, #fbfcfd 0%, var(--bg) 100%);
-      color: var(--ink);
-      line-height: 1.55;
-    }
-
-    .page {
-      width: min(var(--maxw), calc(100% - 2rem));
-      margin: 0 auto;
-      padding: 1rem 0 2.8rem;
-    }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 0.9rem;
-    }
-
-    .amigos-mark {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.55rem;
-      background: linear-gradient(135deg, var(--yellow) 0%, var(--yellow-deep) 100%);
-      border-radius: 10px;
-      padding: 0.48rem 0.68rem;
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
-      color: #0d1721;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-    }
-
-    .amigos-mark .main {
-      font-size: 0.95rem;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .amigos-mark .dots {
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      opacity: 0.7;
-    }
-
-    .meeting {
-      font-size: 0.78rem;
-      color: #16436a;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.05fr 1fr;
-      border-radius: var(--radius-xl);
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      background: var(--white);
-      min-height: 520px;
-      margin-bottom: 1rem;
-    }
-
-    .hero-copy {
-      background:
-        radial-gradient(circle at 15% 10%, rgba(240, 197, 43, 0.14) 0%, transparent 34%),
-        linear-gradient(165deg, #0f2438 0%, #14314b 58%, #10273d 100%);
-      color: #fff;
-      padding: clamp(1.1rem, 4vw, 2.4rem);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .hero-kicker {
-      font-size: 0.74rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #b7d5ea;
-      margin-bottom: 0.6rem;
-      font-weight: 700;
-    }
-
-    .hero h1 {
-      font-size: clamp(2rem, 4.9vw, 3.8rem);
-      line-height: 1.03;
-      max-width: 12ch;
-      margin-bottom: 0.65rem;
-    }
-
-    .hero p {
-      font-size: clamp(0.99rem, 1.6vw, 1.13rem);
-      color: #dfe8f0;
-      max-width: 56ch;
-      margin-bottom: 1rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 0.9rem;
-    }
-
-    .btn {
-      text-decoration: none;
-      border-radius: 10px;
-      padding: 0.58rem 0.92rem;
-      font-size: 0.86rem;
-      font-weight: 700;
-      border: 1px solid transparent;
-      display: inline-block;
-    }
-
-    .btn-main {
-      background: var(--yellow);
-      border-color: #c29a10;
-      color: #111b26;
-    }
-
-    .btn-ghost {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.38);
-      color: #fff;
-    }
-
-    .hero-note {
-      font-size: 0.82rem;
-      color: #c8d8e7;
-      border-left: 3px solid var(--teal);
-      padding-left: 0.6rem;
-      max-width: 58ch;
-    }
-
-    .hero-visual {
-      position: relative;
-      background: #0d1a29;
-    }
-
-    .hero-visual > img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-card {
-      position: absolute;
-      right: 1rem;
-      bottom: 1rem;
-      max-width: 320px;
-      background: rgba(255, 255, 255, 0.93);
-      border: 1px solid rgba(217, 227, 236, 0.9);
-      border-radius: 12px;
-      padding: 0.7rem;
-      backdrop-filter: blur(3px);
-    }
-
-    .hero-card strong {
-      display: block;
-      color: #133552;
-      font-size: 0.88rem;
-      margin-bottom: 0.16rem;
-    }
-
-    .hero-card span {
-      color: #4a627a;
-      font-size: 0.8rem;
-    }
-
-    .proof {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem;
-      margin: 0.15rem 0 1.15rem;
-    }
-
-    .proof span {
-      border: 1px solid var(--line);
-      background: #fff;
-      border-radius: 999px;
-      padding: 0.38rem 0.72rem;
-      font-size: 0.8rem;
-      color: #36526a;
-      font-weight: 600;
-    }
-
-    section {
-      margin-bottom: 1rem;
-      padding: 1rem 0;
-      border-top: 1px solid #dce5ed;
-    }
-
-    h2 {
-      font-size: clamp(1.55rem, 2.9vw, 2.2rem);
-      margin-bottom: 0.42rem;
-      color: #142e47;
-    }
-
-    .subtitle {
-      max-width: 78ch;
-      color: var(--ink-soft);
-      margin-bottom: 0.82rem;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 1.05fr 1fr;
-      gap: 0.95rem;
-      align-items: stretch;
-    }
-
-    .split-copy p {
-      margin-bottom: 0.62rem;
-      color: #3f5c74;
-    }
-
-    .split-copy strong {
-      color: #163553;
-    }
-
-    .split-image {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: 0 12px 26px rgba(13, 30, 46, 0.12);
-      min-height: 280px;
-    }
-
-    .split-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 0.75rem;
-    }
-
-    .result-card {
-      background: #fff;
-      border-radius: var(--radius-lg);
-      padding: 0.92rem;
-      box-shadow: 0 8px 22px rgba(15, 28, 41, 0.08);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      text-align: center;
-    }
-
-    .result-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 15px 30px rgba(15, 28, 41, 0.14);
-    }
-
-    .result-icon {
-      width: 94px;
-      height: 94px;
-      display: grid;
-      place-items: center;
-      margin: 0 auto 0.65rem;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.8) 58%, rgba(255, 255, 255, 0.32) 100%);
-      color: var(--brand-deep);
-      font-size: 2.5rem;
-      font-weight: 700;
-      box-shadow: none;
-    }
-
-    .result-card h3 {
-      font-size: 1rem;
-      color: #163553;
-      margin-bottom: 0.24rem;
-    }
-
-    .result-card p {
-      font-size: 0.87rem;
-      color: #4b637b;
-      text-align: left;
-    }
-
-    .trust-row {
-      margin-top: 0.78rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 0.62rem;
-    }
-
-    .trust-item {
-      border-left: 4px solid var(--teal);
-      background: linear-gradient(180deg, #fff 0%, #f7fbfd 100%);
-      border-radius: 8px;
-      padding: 0.56rem 0.62rem;
-      font-size: 0.84rem;
-      color: #36506a;
-    }
-
-    .future {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
-      align-items: stretch;
-    }
-
-    .future-image {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      min-height: 290px;
-      box-shadow: 0 12px 28px rgba(12, 25, 39, 0.12);
-    }
-
-    .future-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .plan-grid {
-      display: grid;
-      gap: 0.56rem;
-    }
-
-    .plan-step {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 0.62rem;
-    }
-
-    .plan-step strong {
-      display: block;
-      font-size: 0.9rem;
-      color: #163553;
-      margin-bottom: 0.15rem;
-    }
-
-    .plan-step span {
-      font-size: 0.84rem;
-      color: #45617a;
-    }
-
-    .team-list {
-      display: grid;
-      gap: 0.56rem;
-      margin-top: 0.52rem;
-    }
-
-    .team-item {
-      display: grid;
-      grid-template-columns: 230px 1fr;
-      gap: 0.72rem;
-      border-bottom: 1px dashed #d9e3ea;
-      padding: 0.52rem 0;
-    }
-
-    .team-item:last-child {
-      border-bottom: 0;
-    }
-
-    .team-item strong {
-      color: #163553;
-      font-size: 0.95rem;
-    }
-
-    .team-item span {
-      color: #47627a;
-      font-size: 0.9rem;
-    }
-
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: 1.06fr 1fr;
-      gap: 0.85rem;
-      align-items: start;
-    }
-
-    .contact-image {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      min-height: 235px;
-      box-shadow: 0 10px 24px rgba(12, 25, 39, 0.12);
-    }
-
-    .contact-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .contact-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 0.65rem;
-    }
-
-    .fine {
-      margin-top: 0.55rem;
-      color: #4a677f;
-      font-size: 0.8rem;
-    }
-
-    .qr-block {
-      margin-top: 0.65rem;
-      display: inline-flex;
-      flex-direction: column;
-      gap: 0.3rem;
-      align-items: center;
-      background: #fff;
-      border-radius: 14px;
-      padding: 0.5rem;
-      box-shadow: 0 8px 16px rgba(12, 25, 39, 0.1);
-    }
-
-    .qr-block img {
-      width: 156px;
-      height: 156px;
-      border-radius: 8px;
-      display: block;
-    }
-
-    .qr-block span {
-      font-size: 0.78rem;
-      color: #3f5f78;
-      font-weight: 600;
-    }
-
-    footer {
-      margin-top: 0.8rem;
-      border-top: 1px solid #dce5ed;
-      padding-top: 0.8rem;
-      text-align: center;
-      color: #52687d;
-      font-size: 0.76rem;
-    }
-
-    @media (max-width: 980px) {
-      .hero,
-      .split,
-      .future,
-      .contact-wrap {
-        grid-template-columns: 1fr;
-      }
-
-      .team-item {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      .hero-visual {
-        min-height: 320px;
-      }
-    }
-
-    @media (max-width: 620px) {
-      .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .amigos-mark {
-        flex-wrap: wrap;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BPCA Election - Site Under Construction">
+    <title>BPCA Election - Under Construction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            padding: 20px;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .spinner {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-top: 20px;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+            
+            .container {
+                padding: 40px 30px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <main class="page">
-    <div class="topbar">
-      <div class="amigos-mark">
-        <span class="main">Brickell Place Amigos</span>
-        <span class="dots">• • •</span>
-      </div>
-      <div class="meeting">Annual Meeting: Tuesday, March 17, 2026 · 6:30 PM</div>
+    <div class="container">
+        <div class="icon">🏗️</div>
+        <h1>Under Construction</h1>
+        <p>We're working hard to bring you the BPCA Election website. Please check back soon!</p>
+        <div class="spinner"></div>
     </div>
-
-    <header class="hero">
-      <div class="hero-copy">
-        <span class="hero-kicker">A continuity campaign built on delivery</span>
-        <h1>Steady hands. Clear progress. Better living ahead.</h1>
-        <p>For the last five years, the priority was to secure the fundamentals: structure, compliance, operations, and finances. That foundation now allows the next phase to focus on quality of life and long-term value.</p>
-        <div class="hero-actions">
-          <a class="btn btn-main" href="#recommendation">Our Recommendation</a>
-          <a class="btn btn-ghost" href="#contact">Ask a Question</a>
-        </div>
-        <p class="hero-note">Continuity means predictable decisions, direct access, and progress that keeps moving without costly resets.</p>
-      </div>
-      <div class="hero-visual">
-        <img src="assets/images/render-hero.jpg" alt="Pool deck rendering overview">
-        <div class="hero-card">
-          <strong>The next chapter is already underway.</strong>
-          <span>As foundational work nears closeout, priorities shift to livability, functionality, and beautification across shared spaces.</span>
-        </div>
-      </div>
-    </header>
-
-    <div class="proof" aria-label="Key proof points">
-      <span>🗓 Election: March 17, 2026</span>
-      <span>🏗 5-year stabilization cycle near closeout</span>
-      <span>🌿 10-year value runway before 60-year cycle</span>
-      <span>🪟 300+ units in window replacement program</span>
-      <span>💼 Delinquency reduced to about 2%</span>
-      <span>👥 50+ open meetings across 5 years</span>
-    </div>
-
-    <section>
-      <h2>The Method Behind the Progress</h2>
-      <p class="subtitle">Our sequence was deliberate: stabilize critical obligations, modernize core systems, rebuild financial governance, then invest in daily resident experience.</p>
-      <div class="split">
-        <div class="split-copy">
-          <p><strong>Recertification and structural recovery:</strong> overdue compliance and structural scope were brought into a managed completion path in close coordination with the City of Miami.</p>
-          <p><strong>System-level modernization:</strong> core infrastructure was rebuilt across water valves, life-safety systems, mechanical rooms, pumps, generators, and other high-risk components.</p>
-          <p><strong>Open-governance execution:</strong> committees, invited experts, and owners had unusual access to information and direct board dialogue across 50+ meetings.</p>
-          <p><strong>Financial control recovery:</strong> operations were rebuilt end-to-end, with stronger collections, cleaner records, tighter controls, and more reliable planning.</p>
-        </div>
-        <figure class="split-image">
-          <img src="assets/images/render-pool.jpg" alt="Pool deck zone rendering">
-        </figure>
-      </div>
-    </section>
-
-    <section>
-      <h2>Our Track Record</h2>
-      <p class="subtitle">Our model is straightforward: careful decisions, transparent process, and consistent follow-through. Owners can measure it by outcomes.</p>
-      <div class="card-grid">
-        <article class="result-card"><div class="result-icon">🏗️</div><h3>Recertification Execution</h3><p>Moved overdue structural and compliance obligations into a disciplined completion plan with city coordination.</p></article>
-        <article class="result-card"><div class="result-icon">🪟</div><h3>IRMA to Window Program</h3><p>Turned insurance recovery into one of the community's largest window and envelope upgrade programs.</p></article>
-        <article class="result-card"><div class="result-icon">🚨</div><h3>Life-Safety Upgrades</h3><p>Delivered upgraded fire alarm and BDA systems to improve resilience, reliability, and code alignment.</p></article>
-        <article class="result-card"><div class="result-icon">🛡️</div><h3>Security + Access</h3><p>Expanded camera coverage and modernized access controls for stronger monitoring and property security.</p></article>
-        <article class="result-card"><div class="result-icon">🔧</div><h3>In-House Capability</h3><p>Built stronger in-house maintenance and security capacity for faster execution and tighter quality control.</p></article>
-        <article class="result-card"><div class="result-icon">📊</div><h3>Financial Turnaround</h3><p>Rebuilt collections, accounting controls, and payment governance to restore stability and planning confidence.</p></article>
-        <article class="result-card"><div class="result-icon">🤝</div><h3>Owner-Centered Governance</h3><p>Kept owners close to decisions through committees, open meetings, and direct access to information.</p></article>
-        <article class="result-card"><div class="result-icon">🔄</div><h3>Continuity in Practice</h3><p>Rotated service across ten board members in five years while preserving momentum and execution standards.</p></article>
-      </div>
-      <div class="trust-row">
-        <div class="trust-item">Zero litigation spend over the last five years.</div>
-        <div class="trust-item">Zero city fines during this cycle.</div>
-        <div class="trust-item">Strong working coordination with city officials through major compliance milestones.</div>
-        <div class="trust-item">Board direction: pursue upcoming improvements without a planned special assessment.</div>
-      </div>
-    </section>
-
-    <section>
-      <h2>The Next 10-Year Agenda</h2>
-      <p class="subtitle">With stabilization nearing closeout, the next phase centers on livability, usability, and long-term value across community facilities.</p>
-      <div class="future">
-        <figure class="future-image">
-          <img src="assets/images/render-garden.jpg" alt="Common-area future rendering">
-        </figure>
-        <div class="plan-grid">
-          <div class="plan-step"><strong>1. Exterior-first upgrades</strong><span>Start with shared areas where improvements are visible, immediate, and widely used.</span></div>
-          <div class="plan-step"><strong>2. Interior sequence</strong><span>Phase tower interiors and hallways with practical scheduling and cost discipline.</span></div>
-          <div class="plan-step"><strong>3. Activate unused space</strong><span>Convert underused common areas into functional, high-value resident amenities.</span></div>
-          <div class="plan-step"><strong>4. Long-horizon planning</strong><span>Use the runway before the 60-year cycle for planned upgrades, not emergency fixes.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="recommendation">
-      <h2>Our Recommendation for Your Vote</h2>
-      <p class="subtitle">Vote for a team with a proven operating model and the full skill set needed for the next chapter.</p>
-      <div class="team-list">
-        <div class="team-item"><strong>Caridy Patino</strong><span>Leadership continuity with direct owner access and disciplined execution.</span></div>
-        <div class="team-item"><strong>Morgan Sirlin</strong><span>Capital planning and operations leadership for complex, multi-year delivery.</span></div>
-        <div class="team-item"><strong>Alexander Magrisso, Esq.</strong><span>Legal and regulatory judgment for high-stakes governance and compliance decisions.</span></div>
-        <div class="team-item"><strong>Tracy Harrington</strong><span>Construction and design perspective focused on livability and shared-space quality.</span></div>
-        <div class="team-item"><strong>Jessica Bosworth, CPA</strong><span>Financial controls and reporting rigor that strengthen long-term stewardship.</span></div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <h2>Ask Questions. Stay Involved.</h2>
-      <p class="subtitle">Questions are welcome. A strong community runs on direct conversations, clear facts, and shared responsibility.</p>
-      <div class="contact-wrap">
-        <figure class="contact-image">
-          <img src="assets/images/gallery-2.jpg" alt="Community aerial view">
-        </figure>
-        <div>
-          <div class="contact-actions">
-            <a class="btn btn-main" href="assets/images/whatsapp-qr.png" target="_blank" rel="noopener noreferrer" aria-label="Join Amigos WhatsApp Group">Join Amigos WhatsApp Group (200+ owners)</a>
-            <a class="btn btn-ghost" href="mailto:caridy@gmail.com" style="background:#fff;border-color:#c3d1db;color:#14314d;">Email Us</a>
-            <a class="btn btn-ghost" href="tel:+13053029840" style="background:#fff;border-color:#c3d1db;color:#14314d;">Call Us</a>
-          </div>
-          <a class="qr-block" href="assets/images/whatsapp-qr.png" target="_blank" rel="noopener noreferrer" aria-label="Scan WhatsApp QR code">
-            <img src="assets/images/whatsapp-qr.png" alt="WhatsApp QR code to join Amigos group">
-            <span>Scan to join the group</span>
-          </a>
-          <p class="fine">Amigos Chat is owner-built and includes 200+ neighbors sharing updates, ideas, and context. Join the conversation and stay informed.</p>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      Paid for by neighbors supporting the Brickell Place Amigos continuity slate. This is not an official communication of Brickell Place Condominium Association.
-    </footer>
-  </main>
 </body>
 </html>
