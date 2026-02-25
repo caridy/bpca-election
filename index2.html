@@ -739,6 +739,178 @@
     font-size: 14px;
     line-height: 1.7;
   }
+  
+  /* Bio modal trigger button */
+  .team-item{
+    cursor: pointer;
+    position: relative;
+  }
+  .team-item::after{
+    content: "View full bio →";
+    position: absolute;
+    bottom: 18px;
+    right: 18px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--teal);
+    opacity: 0;
+    transition: opacity .25s ease;
+  }
+  .team-item:hover::after{
+    opacity: 1;
+  }
+  
+  /* Modal overlay */
+  .bio-modal{
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(10,25,41,.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 20px;
+    overflow-y: auto;
+    animation: fadeIn .3s ease;
+    align-items: flex-start;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .bio-modal.active{
+    display: flex;
+    justify-content: center;
+  }
+  
+  .bio-modal-content{
+    background: var(--white);
+    border-radius: var(--radius-xl);
+    max-width: 720px;
+    width: 100%;
+    padding: 48px;
+    box-shadow: var(--shadow-hero), 0 0 80px rgba(10,25,41,.4);
+    position: relative;
+    animation: slideUp .4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: auto 0;
+  }
+  @media (max-width: 640px){
+    .bio-modal{
+      padding: 20px;
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+    .bio-modal-content{
+      padding: 32px 24px;
+      max-width: 100%;
+    }
+  }
+  
+  .bio-modal-close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(10,25,41,.06);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--ink-soft);
+    transition: all .2s ease;
+  }
+  .bio-modal-close:hover{
+    background: rgba(10,25,41,.10);
+    transform: rotate(90deg);
+  }
+  
+  .bio-modal-header{
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--line);
+  }
+  .bio-modal-header h3{
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .bio-modal-header .role{
+    font-size: 16px;
+    color: var(--teal);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+  
+  .bio-modal-body{
+    max-width: 100%;
+  }
+  .bio-modal-body p{
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .bio-modal-body p:last-child{
+    margin-bottom: 0;
+  }
+  
+  /* Section headers in bio */
+  .bio-modal-body p strong:first-child{
+    display: block;
+    color: var(--navy);
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 12px;
+    padding-top: 8px;
+  }
+  
+  /* Regular bold text */
+  .bio-modal-body strong{
+    color: var(--navy);
+    font-weight: 700;
+  }
+  
+  /* Bullet points styling */
+  .bio-modal-body p:has(br){
+    background: linear-gradient(135deg, rgba(248,250,252,.8), rgba(248,250,252,.4));
+    border-left: 3px solid var(--teal);
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    margin-bottom: 24px;
+    line-height: 1.9;
+  }
+  
+  @media (max-width: 640px){
+    .bio-modal-header h3{
+      font-size: 26px;
+    }
+    .bio-modal-body p{
+      font-size: 15px;
+    }
+    .bio-modal-body p strong:first-child{
+      font-size: 17px;
+    }
+  }
+  
+  @keyframes fadeIn{
+    from{ opacity: 0; }
+    to{ opacity: 1; }
+  }
+  @keyframes slideUp{
+    from{
+      opacity: 0;
+      transform: translateY(30px) scale(0.96);
+    }
+    to{
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
 
   /* =========================================================
      CONTACT (mobile-optimized)
@@ -980,22 +1152,167 @@
     <div class="section-head reveal">
       <div>
         <h2 id="recommendation-title">Our Recommendation for Your Vote</h2>
-        <p class="subtitle">Vote for a team with a proven operating model and the full skill set needed for the next chapter.</p>
+        <p class="subtitle">Vote for fellow owners who have a proven operating model and the full skill set needed for the next chapter.</p>
       </div>
     </div>
 
     <div class="team reveal">
       <div class="team-list" aria-label="Recommended team">
-        <div class="team-item"><strong>Caridy Patino</strong><span>Leadership continuity with direct owner access and disciplined execution.</span></div>
-        <div class="team-item"><strong>Morgan Sirlin</strong><span>Capital planning and operations leadership for complex, multi-year delivery.</span></div>
-        <div class="team-item"><strong>Alexander Magrisso, Esq.</strong><span>Legal and regulatory judgment for high-stakes governance and compliance decisions.</span></div>
-        <div class="team-item"><strong>Tracy Harrington</strong><span>Construction and design perspective focused on livability and shared-space quality.</span></div>
-        <div class="team-item"><strong>Jessica Bosworth, CPA</strong><span>Financial controls and reporting rigor that strengthen long-term stewardship.</span></div>
+        <div class="team-item" data-bio-id="bio-caridy">
+          <strong>Caridy Patino</strong>
+          <span>Leadership continuity with direct owner access and disciplined execution. Elected as board president in 2021.</span>
+        </div>
+        <div class="team-item" data-bio-id="bio-morgan">
+          <strong>Morgan Sirlin</strong>
+          <span>Capital planning and operations leadership for complex, multi-year delivery. Joined the board in 2025 as treasurer after serving on the finance committee.</span>
+        </div>
+        <div class="team-item" data-bio-id="bio-alex">
+          <strong>Alexander Magrisso, Esq.</strong>
+          <span>Legal and regulatory judgment for high-stakes governance and compliance decisions. Joined the board in 2023.</span>
+        </div>
+        <div class="team-item" data-bio-id="bio-tracy">
+          <strong>Tracy Harrington</strong>
+          <span>Construction and design perspective focused on livability and shared-space quality. Joined the board in 2025.</span>
+        </div>
+        <div class="team-item" data-bio-id="bio-jessica">
+          <strong>Jessica Bosworth, CPA</strong>
+          <span>Financial controls and reporting rigor that strengthen long-term stewardship. Joined the finance committee in 2022 and has collaborated with the board since then.</span>
+        </div>
       </div>
     </div>
 
     <div class="divider" aria-hidden="true"></div>
   </section>
+
+  <!-- Bio Modals -->
+  <div id="bio-caridy" class="bio-modal">
+    <div class="bio-modal-content">
+      <div class="bio-modal-close">×</div>
+      <div class="bio-modal-header">
+        <h3>Caridy Patino</h3>
+        <div class="role">Board President since 2021</div>
+      </div>
+      <div class="bio-modal-body">
+        <p><strong>Why I'm running:</strong> My name is Caridy Patino. I currently serve as Board President and am seeking re-election to help Brickell Place complete the work already underway and transition from recovery to long-term stability and quality of life. I have been an owner here for more than a decade, and both of my children were born in this community. Since joining the Board, my commitment has been simple: steady leadership, open communication, and seeing the job through.</p>
+        
+        <p><strong>What we've done (results and stewardship):</strong> Since 2021, the Board has navigated one of the most complex periods in Brickell Place history—an aging waterfront property facing overdue structural and regulatory requirements, major restoration work, and a financial reset.</p>
+        
+        <p>Key areas of progress include:</p>
+        <p>• Advanced major structural and compliance work, including progress through the 40/50-year recertification requirements and ongoing restoration efforts.<br>
+        • Stabilized long-term financial planning by building stronger guardrails, modern processes, and committee-driven oversight to avoid crisis budgeting.<br>
+        • Professionalized governance by creating committees, improving access to information for owners who want to engage, and maintaining clear boundaries between Board governance and day-to-day operations.</p>
+        
+        <p><strong>What to expect next (the job isn't finished):</strong> The next term is about finishing strong and restoring normalcy—without losing control of the progress made:</p>
+        <p>• Complete remaining recertification and capital work with disciplined oversight and predictable planning.<br>
+        • Shift from "construction zone" to "home": prioritize cleanup, aesthetics, and quality-of-life improvements.<br>
+        • Improve owner experience with management communications by strengthening tracking, follow-through, and clarity on request channels—without the Board micromanaging staff.<br>
+        • Protect property values with stability: thoughtful planning, reserves strategy, and careful decision-making.</p>
+        
+        <p><strong>Professional background:</strong> Computer Scientist B.S., Principal Software Architect at Salesforce.com, Inc. Former Yahoo! Inc. Alumni. Permanent member of international standards organizations including ECMA International and the W3C.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="bio-morgan" class="bio-modal">
+    <div class="bio-modal-content">
+      <div class="bio-modal-close">×</div>
+      <div class="bio-modal-header">
+        <h3>Morgan Sirlin</h3>
+        <div class="role">Treasurer, joined board 2025</div>
+      </div>
+      <div class="bio-modal-body">
+        <p><strong>Why I'm running:</strong> My name is Morgan Sirlin. I currently serve as Treasurer of the Board, and I'm running to help ensure Brickell Place completes its recertification and capital projects with strong financial discipline, clear planning, and a focus on long-term value. My wife and I moved to Brickell Place in 2021, and our first child was born here. Like many owners, this building is not just an investment for us — it's our home.</p>
+        
+        <p><strong>What I've focused on (execution and oversight):</strong> I joined the Board as a working professional with a background in real estate development, finance, and building operations, experience that directly applies to the challenges facing an old condominium undergoing major work.</p>
+        
+        <p>Key areas of responsibility include:</p>
+        <p>• Leading coordination of the 40/50-year recertification efforts, working closely with engineers, contractors, architects, management, and legal advisors.<br>
+        • Oversight of complex budgets and capital planning, including insurance proceeds, assessments, and long-term funding strategies.<br>
+        • Strengthening financial clarity and predictability, helping ensure owners understand how major projects are funded and how financial decisions are made.<br>
+        • Supporting major safety and beautification initiatives, including pool deck and perimeter improvements, as the building moves out of crisis mode.</p>
+        
+        <p><strong>What to expect next:</strong> The work ahead is about closing out major projects and transitioning to a more stable operating rhythm:</p>
+        <p>• Complete remaining recertification and restoration milestones with disciplined financial oversight.<br>
+        • Maintain predictable planning to avoid unnecessary surprises for owners.<br>
+        • Improve how financial information is explained and contextualized for complex construction phases.<br>
+        • Support the shift from emergency-driven decisions to long-term, value-focused stewardship.</p>
+        
+        <p><strong>Professional background:</strong> Real estate development, finance, and operations professional with day-to-day responsibility for large budgets, capital projects, insurance, and construction oversight.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="bio-alex" class="bio-modal">
+    <div class="bio-modal-content">
+      <div class="bio-modal-close">×</div>
+      <div class="bio-modal-header">
+        <h3>Alexander Magrisso, Esq.</h3>
+        <div class="role">Director, joined board 2023</div>
+      </div>
+      <div class="bio-modal-body">
+        <p><strong>Why I'm running:</strong> My name is Alex Magrisso, and I am a licensed attorney in the State of Florida currently serving on the Brickell Place Board of Directors. I am seeking re-election to continue supporting the Board through ongoing legal, regulatory, and compliance matters as the community completes its most complex phase of work. Having served on the Board for the past 3 years, I'm deeply familiar with Brickell Place's recertification efforts, capital projects, and regulatory issues.</p>
+        
+        <p><strong>What I bring:</strong> I bring formal legal training combined with direct Board experience, allowing me to contribute immediately and effectively. My background includes:</p>
+        <p>• Practicing law with a focus on municipal law, real estate, land use, zoning, and regulatory compliance.<br>
+        • Three years on the HOA Board, with active involvement in recertification, compliance, and legal matters.<br>
+        • Working closely with building, planning, zoning, and code-enforcement processes.<br>
+        • Advising leadership on legal risk, compliance obligations, and regulatory interpretation.<br>
+        • Coordinating with city, county, and state agencies on complex regulatory issues.</p>
+        
+        <p>This combination of legal expertise and institutional knowledge is particularly important as Brickell Place completes structural work and navigates ongoing regulatory requirements.</p>
+        
+        <p><strong>What to expect:</strong> As a Board member, my focus is to:</p>
+        <p>• Provide legal and regulatory perspective to support sound, well-informed decisions.<br>
+        • Help anticipate and address compliance issues before they escalate.<br>
+        • Support constructive, professional engagement with municipal and regulatory authorities.<br>
+        • Maintain clear boundaries between governance and day-to-day operations.</p>
+        
+        <p>The goal is not to manage operations, but to ensure full understanding of their legal and regulatory implications.</p>
+        
+        <p><strong>Professional background:</strong> Attorney licensed in the State of Florida. Juris Doctor, St. Thomas University School of Law. B.S. Business Administration (Finance), University of Central Florida.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="bio-tracy" class="bio-modal">
+    <div class="bio-modal-content">
+      <div class="bio-modal-close">×</div>
+      <div class="bio-modal-header">
+        <h3>Tracy Harrington</h3>
+        <div class="role">Director, joined board 2025</div>
+      </div>
+      <div class="bio-modal-body">
+        <p><strong>Why I'm running:</strong> My name is Tracy Harrington, and I am running for the Board of Directors to help Brickell Place transition from a period of major construction and compliance work into a well-maintained, welcoming, and thoughtfully managed community. As a new owner, I have gained a deep appreciation for the scale and complexity of what the building has been navigating, particularly as we complete our 40/50-year recertification and related capital projects.</p>
+        
+        <p><strong>What I bring:</strong> I have spent more than two decades working in public affairs, communications, and project coordination, followed by years running an interior design and property management business serving both residential and commercial clients. At Brickell Place, I am actively involved in:</p>
+        <p>• The Construction Committee, participating in discussions related to active projects and coordination.<br>
+        • The Beautification Committee, helping guide decisions around finishes, aesthetics, and improvements.<br>
+        • Meetings focused on design, functionality, and long-term usability of shared spaces.</p>
+        
+        <p>My experience allows me to contribute a practical, detail-oriented perspective when evaluating how projects affect residents—not just structurally, but functionally and visually.</p>
+        
+        <p><strong>What to expect:</strong> As a Board member, my focus would be to:</p>
+        <p>• Support thoughtful decisions as the building moves out of heavy construction and into a more stable phase.<br>
+        • Help ensure that design, safety, and usability are considered alongside technical and financial requirements.<br>
+        • Contribute to quality-of-life improvements that respect the scale, character, and long-term value of the property.<br>
+        • Work collaboratively within established governance boundaries, without politicizing or disrupting operations.</p>
+        
+        <p>The goal is to help Brickell Place feel like a home again, while preserving the progress already made.</p>
+        
+        <p><strong>Professional background:</strong> Senior roles in public affairs, strategic communications, and media relations for government, corporate, and nonprofit organizations. Founder, Tracy Harrington Interiors / Ruxton Home Managers, providing design and project coordination services for residential and commercial properties. B.A. Political Science, Rosemont College.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="bio-jessica" class="bio-modal">
+    <div class="bio-modal-content">
+      <div class="bio-modal-close">×</div>
+      <div class="bio-modal-header">
+        <h3>Jessica Bosworth, CPA</h3>
+        <div class="role">Finance Committee since 2022</div>
+      </div>
+    </div>
+  </div>
 
   <!-- CONTACT -->
   <section id="contact" class="section" aria-label="Ask Questions. Stay Involved.">
@@ -1055,6 +1372,41 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
 
     els.forEach(function(el){ io.observe(el); });
+  })();
+
+  // Bio modal functionality
+  (function(){
+    // Open modal when clicking team item
+    document.addEventListener('click', function(e){
+      var teamItem = e.target.closest('.team-item');
+      if (teamItem && teamItem.dataset.bioId){
+        var modal = document.getElementById(teamItem.dataset.bioId);
+        if (modal){
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+      
+      // Close modal when clicking close button or backdrop
+      if (e.target.classList.contains('bio-modal-close') || e.target.classList.contains('bio-modal')){
+        var activeModal = document.querySelector('.bio-modal.active');
+        if (activeModal){
+          activeModal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape'){
+        var activeModal = document.querySelector('.bio-modal.active');
+        if (activeModal){
+          activeModal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+    });
   })();
 </script>
 
