@@ -694,6 +694,40 @@
     line-height: 1.7;
   }
 
+  /* Delinquency Chart Tile */
+  .delinquency-tile {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-top: 16px;
+    text-align: center;
+  }
+  .delinquency-tile h4 {
+    color: var(--navy);
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+  }
+  .delinquency-tile .big-number {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--teal);
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+  .delinquency-tile .chart-wrapper {
+    position: relative;
+    height: 120px;
+    width: 100%;
+  }
+  .delinquency-tile .caption {
+    font-size: 12px;
+    color: #666;
+    margin-top: 12px;
+    font-weight: 500;
+  }
+
   /* =========================================================
      TEAM
   ========================================================== */
@@ -1064,7 +1098,7 @@
     <div class="tile reveal">🏗 2025 was our highest-delivery year</div>
     <div class="tile reveal">🧱 Parking deck + pool concrete scope near closeout</div>
     <div class="tile reveal">🪟 300+ units in window replacement program</div>
-    <div class="tile reveal">💼 Delinquency reduced to about 2%</div>
+    <div class="tile reveal">💼 Delinquency now below 1.5% (HOA + SA)</div>
     <div class="tile reveal">🚀 Window mobilization active into 2026</div>
   </section>
 
@@ -1108,7 +1142,7 @@
       <article class="card reveal" role="listitem"><div class="icon">🚨</div><h3>Life-Safety Delivered</h3><p>Fire alarm and BDA system upgrades were completed to strengthen compliance and operational reliability.</p></article>
       <article class="card reveal" role="listitem"><div class="icon">🛡️</div><h3>Security + Access Upgraded</h3><p>Common-area camera coverage and access systems were modernized to improve control and day-to-day safety.</p></article>
       <article class="card reveal" role="listitem"><div class="icon">🔧</div><h3>Core Systems Rebuilt</h3><p>Valves, mechanical rooms, pumps, generators, and other high-risk infrastructure received major repair or replacement.</p></article>
-      <article class="card reveal" role="listitem"><div class="icon">📊</div><h3>Financial Control Stabilized</h3><p>Collections, controls, and operating discipline improved, with delinquency reduced to around 2%.</p></article>
+      <article class="card reveal" role="listitem"><div class="icon">📊</div><h3>Collections Promise Kept</h3><p>Five years ago, we set a target to bring delinquency below 2.5%. Today, both HOA and Special Assessment delinquency are below 1.5%, which is generally considered strong in our area.</p><div class="delinquency-tile"><h4>Delinquency Reduced</h4><div class="big-number">↓ 7.8% → 1.4%</div><div class="chart-wrapper"><canvas id="delinquencyChart"></canvas></div><div class="caption">Since 2023</div></div></article>
       <article class="card reveal" role="listitem"><div class="icon">🤝</div><h3>Open-Access Governance</h3><p>Committees, invited experts, and owners maintained direct board access across a high-volume meeting cadence.</p></article>
       <article class="card reveal" role="listitem"><div class="icon">➡️</div><h3>Active Into 2026</h3><p>The 2025 execution base is now carrying directly into window rollout and final construction closeout phases.</p></article>
     </div>
@@ -1409,6 +1443,43 @@
         if (activeModal){
           activeModal.classList.remove('active');
           document.body.style.overflow = '';
+        }
+      }
+    });
+  })();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+  // Initialize delinquency chart
+  (function(){
+    const ctx = document.getElementById('delinquencyChart');
+    if (!ctx) return;
+    
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Jan 23', 'Jul 23', 'Jan 24', 'Jul 24', 'Jan 25', 'Jul 25', 'Jan 26'],
+        datasets: [{
+          data: [7.8, 9.5, 5.5, 3.5, 3.6, 2.0, 1.4],
+          borderColor: '#0d9488',
+          backgroundColor: 'rgba(13, 148, 136, 0.15)',
+          fill: true,
+          tension: 0.4,
+          pointRadius: 0,
+          borderWidth: 3
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { enabled: false }
+        },
+        scales: {
+          x: { display: false },
+          y: { display: false }
         }
       }
     });
