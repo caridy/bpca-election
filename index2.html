@@ -1308,10 +1308,10 @@
     </div>
 
     <div class="grid" role="list" aria-label="Track record results">
-      <article class="card reveal" role="listitem"><div class="icon">🧱</div><h3>Concrete Closeout Momentum</h3><p>Parking deck and pool concrete restoration were pushed into visible late-stage execution after years of disruption.</p></article>
+      <article class="card reveal receipt-card" role="listitem" data-receipt-id="receipt-concrete-closeout"><div class="icon">🧱</div><h3>Concrete Closeout Momentum</h3><p>After years of structural restoration, the program is now in final-mile punchout and closeout with an active engineer milestone report.</p><div class="view-receipt">View details →</div></article>
       <article class="card reveal receipt-card" role="listitem" data-receipt-id="receipt-delinquency"><div class="icon">💰</div><h3>Delinquency Reduction</h3><p>↓ 9.34% (2023) → 1.42% (2026)</p><div class="chart-wrapper"><canvas id="delinquencyChart"></canvas></div><div class="view-receipt">View details →</div></article>
       <article class="card reveal" role="listitem"><div class="icon">🪟</div><h3>Window Program Mobilized</h3><p>Insurance recovery was converted into active program logistics, with 300+ units aligned for replacement phases.</p></article>
-      <article class="card reveal" role="listitem"><div class="icon">🚨</div><h3>Life-Safety Delivered</h3><p>Fire alarm and BDA system upgrades were completed to strengthen compliance and operational reliability.</p></article>
+      <article class="card reveal receipt-card" role="listitem" data-receipt-id="receipt-life-safety"><div class="icon">🚨</div><h3>Life-Safety Delivered</h3><p>From IRMA-related system damage to code-aligned operation across towers and townhouses, with BDA coverage and final permit closeout in progress.</p><div class="view-receipt">View details →</div></article>
       <article class="card reveal" role="listitem"><div class="icon">🛡️</div><h3>Security + Access Upgraded</h3><p>Common-area camera coverage and access systems were modernized to improve control and day-to-day safety.</p></article>
       <article class="card reveal" role="listitem"><div class="icon">🔧</div><h3>Core Systems Rebuilt</h3><p>Valves, mechanical rooms, pumps, generators, and other high-risk infrastructure received major repair or replacement.</p></article>
       <article class="card reveal" role="listitem"><div class="icon">🤝</div><h3>Open-Access Governance</h3><p>Committees, invited experts, and owners maintained direct board access across a high-volume meeting cadence.</p></article>
@@ -1420,10 +1420,31 @@
   </div>
 
   <!-- RECEIPT MODALS -->
+  <div id="receipt-concrete-closeout" class="receipt-modal">
+    <div class="receipt-modal-content">
+      <div class="receipt-modal-close">×</div>
+      <iframe src="receipts/concrete-closeout.html" title="Concrete Closeout Momentum"></iframe>
+    </div>
+  </div>
+
   <div id="receipt-delinquency" class="receipt-modal">
     <div class="receipt-modal-content">
       <div class="receipt-modal-close">×</div>
       <iframe src="receipts/delinquency.html" title="Collections Promise Kept"></iframe>
+    </div>
+  </div>
+
+  <div id="receipt-life-safety" class="receipt-modal">
+    <div class="receipt-modal-content">
+      <div class="receipt-modal-close">×</div>
+      <iframe src="receipts/life-safety-modernization.html" title="Life-Safety Delivered"></iframe>
+    </div>
+  </div>
+
+  <div id="receipt-security-access" class="receipt-modal">
+    <div class="receipt-modal-content">
+      <div class="receipt-modal-close">×</div>
+      <iframe src="receipts/security-access-upgraded.html" title="Security + Access Upgraded"></iframe>
     </div>
   </div>
 
