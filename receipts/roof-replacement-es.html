@@ -41,6 +41,21 @@
 
 <p><strong>Ejecución con mínima interrupción:</strong> El trabajo se completó mientras los residentes permanecieron en ocupación, con programación por fases para limitar impactos de ruido y acceso.</p>
 
+<h4>Antes / Después</h4>
+<p>Arrastre la línea central para comparar la condición del techo antes del reemplazo y después de la instalación del nuevo sistema.</p>
+
+<div class="img-compare" data-initial="55" aria-label="Comparación del techo antes y después">
+  <img class="img-compare__img img-compare__img--after" src="../assets/images/roof-new-building-b.jpeg" alt="Techo nuevo después del reemplazo (Edificio B)">
+  <img class="img-compare__img img-compare__img--before" src="../assets/images/roof-old-building-b.jpeg" alt="Techo antes del reemplazo (Edificio B)">
+  <input class="img-compare__range" type="range" min="0" max="100" value="55" aria-label="Arrastre para comparar antes y después">
+  <div class="img-compare__divider" aria-hidden="true"></div>
+  <div class="img-compare__handle" aria-hidden="true"></div>
+  <div class="img-compare__labels" aria-hidden="true">
+    <span>Antes</span>
+    <span>Después</span>
+  </div>
+</div>
+
 <h4>Estado Actual</h4>
 <p>El reemplazo del techo está operativamente completo. La inspección final y el cierre del contratista están pendientes para cerrar el permiso y formalizar el cierre del proyecto.</p>
 
@@ -59,6 +74,130 @@
 <p>El reemplazo de techos es uno de los proyectos de capital de mayor costo e impacto que puede ejecutar un condominio. Completar este trabajo en 2025 eliminó una exposición importante de riesgo, mejoró la protección ante futuros eventos climáticos y entregó ahorros inmediatos en seguros. El enfoque de financiamiento combinado también demostró planificación de capital disciplinada al aprovechar múltiples fuentes en lugar de imponer una carga innecesaria de cuota extraordinaria.</p>
 
 <p>Este proyecto representa el tipo de administración a largo plazo que protege los valores de propiedad y reduce el gasto futuro de emergencia.</p>
+
+<style>
+  .img-compare{
+    --pos: 55%;
+    position: relative;
+    width: 100%;
+    max-width: 980px;
+    margin: 14px 0 20px 0;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #0b1220;
+    box-shadow: 0 10px 30px rgba(10,25,41,.14);
+    aspect-ratio: 3 / 4;
+  }
+  .img-compare__img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  .img-compare__img--before{
+    /* Recorta la imagen ANTES sin redimensionarla. */
+    clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+  }
+  .img-compare__range{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: ew-resize;
+    margin: 0;
+  }
+  .img-compare__divider{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--pos);
+    width: 3px;
+    background: rgba(255,255,255,.92);
+    transform: translateX(-1.5px);
+    pointer-events: none;
+    box-shadow: 0 0 0 1px rgba(13,148,136,.35);
+  }
+  .img-compare__handle{
+    position: absolute;
+    top: 50%;
+    left: var(--pos);
+    width: 58px;
+    height: 58px;
+    transform: translate(-50%, -50%);
+    border-radius: 999px;
+    background: rgba(13,148,136,.96);
+    border: 2px solid rgba(255,255,255,.92);
+    box-shadow: 0 12px 26px rgba(0,0,0,.28);
+    pointer-events: none;
+  }
+  .img-compare__handle::before{
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border-radius: 999px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.28), rgba(255,255,255,0));
+  }
+  .img-compare__handle::after{
+    content: "⇆";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: .02em;
+    color: rgba(255,255,255,.98);
+    text-shadow: 0 2px 10px rgba(0,0,0,.28);
+  }
+  .img-compare__labels{
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    pointer-events: none;
+  }
+  .img-compare__labels span{
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(10,25,41,.82);
+    border: 1px solid rgba(255,255,255,.35);
+    color: rgba(255,255,255,.92);
+    font-weight: 700;
+    font-size: 12px;
+  }
+  @media (max-width: 520px){
+    .img-compare{
+      border-radius: 12px;
+    }
+  }
+</style>
+
+<script>
+  (function(){
+    var el = document.querySelector('.img-compare');
+    if (!el) return;
+    var range = el.querySelector('.img-compare__range');
+    if (!range) return;
+
+    function setPos(v){
+      var n = Math.max(0, Math.min(100, Number(v) || 0));
+      el.style.setProperty('--pos', n + '%');
+    }
+
+    setPos(range.value);
+    range.addEventListener('input', function(){ setPos(range.value); });
+  })();
+</script>
 
 </body>
 </html>
