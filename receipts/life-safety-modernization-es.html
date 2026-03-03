@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../modal-content.css">
+<link rel="stylesheet" href="../img-compare.css">
 </head>
 <body>
 
@@ -39,6 +40,32 @@
 <p><strong>Cumplimiento de comunicaciones de emergencia:</strong> se instalaron antenas BDA requeridas por código para que los bomberos puedan mantener cobertura de radio en toda la propiedad.</p>
 <p><strong>Preparación de acceso:</strong> los patrones de tráfico se ajustaron para mejorar la entrada y maniobrabilidad de camiones de bomberos durante respuesta de emergencia.</p>
 
+<figure style="margin: 0 0 20px 0;">
+  <img
+    src="../assets/images/life-safety-front-gate-command-center.jpeg"
+    alt="Centro de mando/annunciador en la garita principal"
+    style="width:100%; border-radius:12px; box-shadow:0 8px 24px rgba(10,25,41,.12);"
+  >
+  <figcaption style="margin-top:10px; color:#64748b; font-size:13px;">
+    Punto de mando en la garita: atendido 24/7 y ubicado para respuesta rápida, mientras los paneles principales permanecen protegidos dentro de los edificios para reducir exposición a eventos de tormenta.
+  </figcaption>
+</figure>
+
+<h4>Antes / Después</h4>
+<p>Arrastre la línea central para comparar el estado anterior de la tubería de rociadores del garaje con la tubería actual ya modernizada.</p>
+
+<div class="img-compare" data-initial="55" aria-label="Comparación de tubería de rociadores del garaje antes y después">
+  <img class="img-compare__img img-compare__img--after" src="../assets/images/sprinkler-pipes-after.jpeg" alt="Tubería de rociadores modernizada (después)">
+  <img class="img-compare__img img-compare__img--before" src="../assets/images/sprinkler-pipes-before.jpeg" alt="Tubería de rociadores envejecida (antes)">
+  <input class="img-compare__range" type="range" min="0" max="100" value="55" aria-label="Arrastre para comparar antes y después">
+  <div class="img-compare__divider" aria-hidden="true"></div>
+  <div class="img-compare__handle" aria-hidden="true"></div>
+  <div class="img-compare__labels" aria-hidden="true">
+    <span>Antes</span>
+    <span>Después</span>
+  </div>
+</div>
+
 <h4>Estado Actual</h4>
 <p>El sistema actualizado está operativo. La inspección final está completa para la Torre A; faltan las inspecciones finales del Edificio B y los townhouses para cerrar permisos.</p>
 
@@ -48,11 +75,14 @@
     <li>Archivos de permisos y registros de inspección final por alcance de torre/townhouse.</li>
     <li>Presentaciones de ingeniero y contratista para alarma de incendios, BDA y actualizaciones de supresión.</li>
     <li>Registros de reuniones que documentan fases, financiamiento y estado de cierre.</li>
+    <li>Registros de instalación y cambio a operación del centro de mando/annunciador en la garita.</li>
   </ul>
 </div>
 
 <h4>Por Qué Esto Importa</h4>
 <p>Este fue un esfuerzo de ejecución quirúrgica de varios años, realizado mientras los residentes continuaban su vida diaria con mínima interrupción. Redujo riesgo de responsabilidad, mejoró la preparación ante emergencias y dejó la infraestructura crítica de seguridad contra incendios en una base mucho más sólida.</p>
+
+<script src="../img-compare.js" defer></script>
 
 </body>
 </html>

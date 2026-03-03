@@ -1,0 +1,126 @@
+.bp-gallery{
+  --bg: rgba(10,25,41,.92);
+  --fg: rgba(255,255,255,.94);
+  --muted: rgba(255,255,255,.72);
+  --accent: rgba(13,148,136,.96);
+  position: relative;
+  margin: 14px 0 20px 0;
+}
+
+.bp-gallery__viewport{
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0b1220;
+  box-shadow: 0 10px 30px rgba(10,25,41,.14);
+}
+
+.bp-gallery__track{
+  display: flex;
+  width: 100%;
+  transition: transform 260ms cubic-bezier(.2,.9,.2,1);
+  will-change: transform;
+}
+
+.bp-gallery__slide{
+  flex: 0 0 100%;
+  margin: 0;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: #0b1220;
+}
+
+.bp-gallery__slide img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.bp-gallery__caption{
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(10,25,41,.82);
+  border: 1px solid rgba(255,255,255,.22);
+  color: var(--fg);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.bp-gallery__nav{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  pointer-events: none;
+}
+
+.bp-gallery__btn{
+  pointer-events: auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.55);
+  background: rgba(10,25,41,.86);
+  color: var(--fg);
+  font-weight: 900;
+  font-size: 18px;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 22px rgba(0,0,0,.20);
+  cursor: pointer;
+}
+
+.bp-gallery__btn:hover{
+  border-color: rgba(255,255,255,.85);
+  background: rgba(13,148,136,.92);
+}
+
+.bp-gallery__btn:disabled{
+  opacity: .35;
+  cursor: default;
+}
+
+.bp-gallery__dots{
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.bp-gallery__dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(10,25,41,.25);
+  border: 1px solid rgba(10,25,41,.25);
+}
+
+.bp-gallery__dot.is-active{
+  background: rgba(13,148,136,.96);
+  border-color: rgba(13,148,136,.96);
+}
+
+.bp-gallery__hint{
+  margin-top: 8px;
+  color: rgba(100,116,139,.92);
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 520px){
+  .bp-gallery__viewport{ border-radius: 12px; }
+  .bp-gallery__caption{ font-size: 12px; }
+  .bp-gallery__btn{ width: 40px; height: 40px; }
+}
+

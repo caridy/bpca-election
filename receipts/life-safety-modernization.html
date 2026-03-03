@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../modal-content.css">
+<link rel="stylesheet" href="../img-compare.css">
 </head>
 <body>
 
@@ -39,6 +40,32 @@
 <p><strong>Emergency communications compliance:</strong> code-required BDA antennas were installed so firefighters can maintain radio coverage throughout the property.</p>
 <p><strong>Access readiness:</strong> traffic patterns were adjusted to improve fire truck entry and maneuverability during emergency response.</p>
 
+<figure style="margin: 0 0 20px 0;">
+  <img
+    src="../assets/images/life-safety-front-gate-command-center.jpeg"
+    alt="Front gate digital voice command / annunciator command center"
+    style="width:100%; border-radius:12px; box-shadow:0 8px 24px rgba(10,25,41,.12);"
+  >
+  <figcaption style="margin-top:10px; color:#64748b; font-size:13px;">
+    Front gate command point: staffed 24/7 and positioned for rapid response, while the primary fire alarm panels remain protected inside the buildings to reduce storm-related exposure.
+  </figcaption>
+</figure>
+
+<h4>Before / After</h4>
+<p>Drag the center line to compare the old garage sprinkler piping condition with the upgraded piping now in place.</p>
+
+<div class="img-compare" data-initial="55" aria-label="Garage sprinkler piping before and after comparison">
+  <img class="img-compare__img img-compare__img--after" src="../assets/images/sprinkler-pipes-after.jpeg" alt="Upgraded garage sprinkler piping (after)">
+  <img class="img-compare__img img-compare__img--before" src="../assets/images/sprinkler-pipes-before.jpeg" alt="Aged garage sprinkler piping (before)">
+  <input class="img-compare__range" type="range" min="0" max="100" value="55" aria-label="Drag to compare before and after">
+  <div class="img-compare__divider" aria-hidden="true"></div>
+  <div class="img-compare__handle" aria-hidden="true"></div>
+  <div class="img-compare__labels" aria-hidden="true">
+    <span>Before</span>
+    <span>After</span>
+  </div>
+</div>
+
 <h4>Current Status</h4>
 <p>The upgraded system is operational. Final inspection is complete for Tower A, with final inspections pending for Building B and townhouses to close permits.</p>
 
@@ -48,11 +75,14 @@
     <li>Permit files and final-inspection records by tower/townhouse scope.</li>
     <li>Engineer and contractor submittals for fire alarm, BDA, and suppression upgrades.</li>
     <li>Meeting records documenting phasing, funding, and closeout status.</li>
+    <li>Front gate annunciator/voice command center installation and cutover records.</li>
   </ul>
 </div>
 
 <h4>Why This Matters</h4>
 <p>This was a surgical, multi-year execution effort done while residents continued daily life with minimal disruption. It reduced high-liability risk, improved emergency readiness, and brought core life-safety infrastructure to a materially stronger baseline.</p>
+
+<script src="../img-compare.js" defer></script>
 
 </body>
 </html>
