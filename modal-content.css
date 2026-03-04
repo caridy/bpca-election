@@ -83,14 +83,24 @@ h3 {
 }
 
 .bio-photo{
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-xl);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
   border: 1px solid rgba(10,25,41,.10);
   box-shadow: 0 14px 30px rgba(10,25,41,.12);
   margin: 14px auto 22px auto;
-  max-width: 520px; /* keep it friendly in an iframe; not full-bleed */
   display: block;
+  object-fit: cover;
+}
+.bio-photo.avatar-caridy{object-position: 32% 18%;}
+.bio-photo.avatar-morgan{object-position: 60% 18%;}
+.bio-photo.avatar-alex{object-position: 50% 18%;}
+.bio-photo.avatar-tracy{object-position: 52% 15%;}
+@media (max-width: 640px) {
+  .bio-photo{
+    width: 160px;
+    height: 160px;
+  }
 }
 
 h4 {
