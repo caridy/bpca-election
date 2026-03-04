@@ -1653,17 +1653,24 @@
     </div>
   </div>
 
-  <div id="receipt-open-governance" class="receipt-modal">
-    <div class="receipt-modal-content">
-      <div class="receipt-modal-close">×</div>
-      <iframe src="receipts/open-governance-es.html" title="Gobernanza de Acceso Abierto"></iframe>
-    </div>
-  </div>
+	  <div id="receipt-open-governance" class="receipt-modal">
+	    <div class="receipt-modal-content">
+	      <div class="receipt-modal-close">×</div>
+	      <iframe src="receipts/open-governance-es.html" title="Gobernanza de Acceso Abierto"></iframe>
+	    </div>
+	  </div>
 
-  <!-- FAQ -->
-  <section id="faq" class="section" aria-label="Preguntas Frecuentes">
-    <div class="section-head reveal">
-      <div>
+		  <div id="receipt-how-to-vote" class="receipt-modal">
+		    <div class="receipt-modal-content">
+		      <div class="receipt-modal-close">×</div>
+		      <iframe src="help/how-to-vote-online-es.html" title="Cómo Votar En Línea"></iframe>
+		    </div>
+		  </div>
+
+	  <!-- FAQ -->
+	  <section id="faq" class="section" aria-label="Preguntas Frecuentes">
+	    <div class="section-head reveal">
+	      <div>
         <h2>Preguntas Frecuentes</h2>
         <p class="subtitle">Respuestas directas a preguntas comunes sobre proyectos, cronogramas, finanzas y operaciones.</p>
       </div>
@@ -1760,23 +1767,32 @@
         </details>
       </div>
 
-      <div class="faq-item reveal">
-        <details>
-          <summary>¿Qué pasa si opté por no participar en el programa de ventanas?</summary>
-          <div class="faq-answer">
-            Los propietarios que optaron por no participar no pueden reemplazar ventanas individualmente hasta que se complete el programa masivo. Cualquier reemplazo futuro debe cumplir con las especificaciones de MCWC, pasar los requisitos de inspección y puede ser obligatorio para finales de 2027 según la orientación de ingeniería. Optar por no participar retrasa el trabajo pero no elimina el requisito eventual.
-          </div>
-        </details>
-      </div>
+	      <div class="faq-item reveal">
+	        <details>
+	          <summary>¿Qué pasa si opté por no participar en el programa de ventanas?</summary>
+	          <div class="faq-answer">
+	            Los propietarios que optaron por no participar no pueden reemplazar ventanas individualmente hasta que se complete el programa masivo. Cualquier reemplazo futuro debe cumplir con las especificaciones de MCWC, pasar los requisitos de inspección y puede ser obligatorio para finales de 2027 según la orientación de ingeniería. Optar por no participar retrasa el trabajo pero no elimina el requisito eventual.
+	          </div>
+	        </details>
+	      </div>
 
-      <div class="faq-item reveal">
-        <details>
-          <summary>¿Cómo puedo participar o hacer más preguntas?</summary>
-          <div class="faq-answer">
-            Únase al Grupo de WhatsApp Amigos (más de 200 propietarios), asista a reuniones de la Junta Directiva (horarios en BuildingLink), revise paquetes de reuniones y boletines, o contacte directamente a los miembros de la Junta Directiva. La próxima fase necesita aportes creativos de propietarios con habilidades en diseño, construcción y planificación. La participación es la forma en que las buenas ideas se convierten en mejoras reales.
-          </div>
-        </details>
-      </div>
+	      <div class="faq-item reveal">
+	        <details>
+	          <summary>¿Cómo puedo votar en línea?</summary>
+	          <div class="faq-answer">
+	            Use la guía paso a paso aquí: <a href="#como-votar-en-linea" data-open-receipt="receipt-how-to-vote">Cómo votar en línea</a>. Si no recibió el correo para votar, usualmente significa que no está registrado para votación electrónica. Contacte a la oficina para registrarse y poder votar en línea.
+	          </div>
+	        </details>
+	      </div>
+
+	      <div class="faq-item reveal">
+	        <details>
+	          <summary>¿Cómo puedo participar o hacer más preguntas?</summary>
+	          <div class="faq-answer">
+	            Únase al Grupo de WhatsApp Amigos (más de 200 propietarios), asista a reuniones de la Junta Directiva (horarios en BuildingLink), revise paquetes de reuniones y boletines, o contacte directamente a los miembros de la Junta Directiva. La próxima fase necesita aportes creativos de propietarios con habilidades en diseño, construcción y planificación. La participación es la forma en que las buenas ideas se convierten en mejoras reales.
+	          </div>
+	        </details>
+	      </div>
     </div>
     <div class="divider" aria-hidden="true"></div>
   </section>
@@ -1880,15 +1896,26 @@
     });
   })();
 
-  // Receipt modal functionality
-  (function(){
-    // Open receipt modal when clicking receipt card
-    document.addEventListener('click', function(e){
-      var receiptCard = e.target.closest('.receipt-card');
-      if (receiptCard && receiptCard.dataset.receiptId){
-        var modal = document.getElementById(receiptCard.dataset.receiptId);
-        if (modal){
-          modal.classList.add('active');
+	  // Receipt modal functionality
+	  (function(){
+	    // Open receipt modal when clicking receipt card
+	    document.addEventListener('click', function(e){
+	      var openLink = e.target.closest('[data-open-receipt]');
+	      if (openLink && openLink.dataset.openReceipt){
+	        e.preventDefault();
+	        var linkModal = document.getElementById(openLink.dataset.openReceipt);
+	        if (linkModal){
+	          linkModal.classList.add('active');
+	          document.body.style.overflow = 'hidden';
+	          return;
+	        }
+	      }
+
+	      var receiptCard = e.target.closest('.receipt-card');
+	      if (receiptCard && receiptCard.dataset.receiptId){
+	        var modal = document.getElementById(receiptCard.dataset.receiptId);
+	        if (modal){
+	          modal.classList.add('active');
           document.body.style.overflow = 'hidden';
         }
       }

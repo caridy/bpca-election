@@ -1654,17 +1654,24 @@
     </div>
   </div>
 
-  <div id="receipt-open-governance" class="receipt-modal">
-    <div class="receipt-modal-content">
-      <div class="receipt-modal-close">×</div>
-      <iframe src="receipts/open-governance.html" title="Open-Access Governance"></iframe>
-    </div>
-  </div>
+	  <div id="receipt-open-governance" class="receipt-modal">
+	    <div class="receipt-modal-content">
+	      <div class="receipt-modal-close">×</div>
+	      <iframe src="receipts/open-governance.html" title="Open-Access Governance"></iframe>
+	    </div>
+	  </div>
 
-  <!-- FAQ -->
-  <section id="faq" class="section" aria-label="Frequently Asked Questions">
-    <div class="section-head reveal">
-      <div>
+		  <div id="receipt-how-to-vote" class="receipt-modal">
+		    <div class="receipt-modal-content">
+		      <div class="receipt-modal-close">×</div>
+		      <iframe src="help/how-to-vote-online.html" title="How to Vote Online"></iframe>
+		    </div>
+		  </div>
+
+	  <!-- FAQ -->
+	  <section id="faq" class="section" aria-label="Frequently Asked Questions">
+	    <div class="section-head reveal">
+	      <div>
         <h2>Frequently Asked Questions</h2>
         <p class="subtitle">Direct answers to common questions about projects, timelines, finances, and operations.</p>
       </div>
@@ -1761,23 +1768,32 @@
         </details>
       </div>
 
-      <div class="faq-item reveal">
-        <details>
-          <summary>What happens if I opted out of the window program?</summary>
-          <div class="faq-answer">
-            Opt-out owners cannot replace windows individually until the bulk program completes. Any future replacement must meet MCWC specifications, pass inspection requirements, and may be mandated by late 2027 per engineering guidance. Opting out delays the work but doesn't eliminate the eventual requirement.
-          </div>
-        </details>
-      </div>
+	      <div class="faq-item reveal">
+	        <details>
+	          <summary>What happens if I opted out of the window program?</summary>
+	          <div class="faq-answer">
+	            Opt-out owners cannot replace windows individually until the bulk program completes. Any future replacement must meet MCWC specifications, pass inspection requirements, and may be mandated by late 2027 per engineering guidance. Opting out delays the work but doesn't eliminate the eventual requirement.
+	          </div>
+	        </details>
+	      </div>
 
-      <div class="faq-item reveal">
-        <details>
-          <summary>How can I participate or ask more questions?</summary>
-          <div class="faq-answer">
-            Join the Amigos WhatsApp Group (200+ owners), attend board meetings (schedules in BuildingLink), review meeting packets and newsletters, or contact board members directly. The next phase needs creative input from owners with design, construction, and planning skills. Participation is how good ideas become real improvements.
-          </div>
-        </details>
-      </div>
+	      <div class="faq-item reveal">
+	        <details>
+	          <summary>How do I vote online?</summary>
+	          <div class="faq-answer">
+	            Use the step-by-step guide here: <a href="#how-to-vote-online" data-open-receipt="receipt-how-to-vote">How to vote online</a>. If you did not receive the voting email, it usually means you are not registered for electronic voting. Contact the office to get enrolled so you can vote online.
+	          </div>
+	        </details>
+	      </div>
+
+	      <div class="faq-item reveal">
+	        <details>
+	          <summary>How can I participate or ask more questions?</summary>
+	          <div class="faq-answer">
+	            Join the Amigos WhatsApp Group (200+ owners), attend board meetings (schedules in BuildingLink), review meeting packets and newsletters, or contact board members directly. The next phase needs creative input from owners with design, construction, and planning skills. Participation is how good ideas become real improvements.
+	          </div>
+	        </details>
+	      </div>
     </div>
 
     <div class="divider" aria-hidden="true"></div>
@@ -1882,15 +1898,26 @@
     });
   })();
 
-  // Receipt modal functionality
-  (function(){
-    // Open receipt modal when clicking receipt card
-    document.addEventListener('click', function(e){
-      var receiptCard = e.target.closest('.receipt-card');
-      if (receiptCard && receiptCard.dataset.receiptId){
-        var modal = document.getElementById(receiptCard.dataset.receiptId);
-        if (modal){
-          modal.classList.add('active');
+	  // Receipt modal functionality
+	  (function(){
+	    // Open receipt modal when clicking receipt card
+	    document.addEventListener('click', function(e){
+	      var openLink = e.target.closest('[data-open-receipt]');
+	      if (openLink && openLink.dataset.openReceipt){
+	        e.preventDefault();
+	        var linkModal = document.getElementById(openLink.dataset.openReceipt);
+	        if (linkModal){
+	          linkModal.classList.add('active');
+	          document.body.style.overflow = 'hidden';
+	          return;
+	        }
+	      }
+
+	      var receiptCard = e.target.closest('.receipt-card');
+	      if (receiptCard && receiptCard.dataset.receiptId){
+	        var modal = document.getElementById(receiptCard.dataset.receiptId);
+	        if (modal){
+	          modal.classList.add('active');
           document.body.style.overflow = 'hidden';
         }
       }
