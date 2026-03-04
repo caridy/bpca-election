@@ -75,7 +75,8 @@ h3 {
 .bio-avatar.avatar-caridy{object-position: 32% 18%;}
 .bio-avatar.avatar-morgan{object-position: 60% 18%;}
 .bio-avatar.avatar-alex{object-position: 50% 18%;}
-.bio-avatar.avatar-tracy{object-position: 52% 22%;}
+.bio-avatar.avatar-tracy{object-position: 52% 15%;}
+.bio-avatar.avatar-jessica{object-position: 50% 18%;}
 @media (max-width: 640px) {
   .bio-avatar{width: 64px; height: 64px;}
   .bio-avatar.lg{width: 80px; height: 80px;}
